@@ -20,7 +20,9 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Skip locale middleware for Payload admin
-  if (pathname.startsWith("/admin")|| pathname.startsWith("/next")) {
+  if (pathname.startsWith("/admin") ||
+    pathname.startsWith("/next") ||
+    pathname.startsWith("/search")) {
     return NextResponse.next();
   }
 

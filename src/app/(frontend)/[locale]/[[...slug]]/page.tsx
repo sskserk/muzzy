@@ -6,7 +6,8 @@ import { getPayload, TypedLocale, type RequiredDataFromCollectionSlug } from 'pa
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 import { homeStatic } from '@/endpoints/seed/home-static'
-
+import { Footer } from '@/Footer/Component'
+import { Header } from '@/Header/Component'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 //import { RenderHero } from '@/heros/RenderHero'
@@ -70,19 +71,23 @@ export default async function Page({ params: paramsPromise }: Args) {
     return <PayloadRedirects url={url} />
   }
 
-  const {  layout } = page
+  const { layout } = page
 
   return (
-    <article className="pt-16 pb-24">
-      <PageClient />
-      {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
+    <>
+      <Header />
+      <article className="pt-16 pb-24">
+        <PageClient />
+        {/* Allows redirects for valid pages too */}
+        <PayloadRedirects disableNotFound url={url} />
 
-      {draft && <LivePreviewListener />}
+        {draft && <LivePreviewListener />}
 
-      {/* <RenderHero {...hero} /> */}
-      <RenderBlocks blocks={layout} />
-    </article>
+        {/* <RenderHero {...hero} /> */}
+        <RenderBlocks blocks={layout} />
+      </article>
+      <Footer />
+    </>
   )
 }
 
@@ -104,7 +109,7 @@ const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale: T
   console.log('Querying page by slug:', slug, 'locale:', locale, 'draft mode:', draft)
   const payload = await getPayload({ config: configPromise })
 
-  const locName= locale;
+  const locName = locale;
 
   const result = await payload.find({
     collection: 'pages',

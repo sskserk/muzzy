@@ -5,11 +5,13 @@ import { Button, type ButtonProps } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
 import Link from 'next/link'
 import React from 'react'
+import { supportedLocales, defaultLocale } from '@/conf'
 
 import type { Page, Post } from '@/payload-types'
 
-const LOCALES = ['en', 'nl', 'ko'] as const
-const DEFAULT_LOCALE = 'en'
+//const supportedLocales = ['en', 'nl', 'ko'] as const
+//const DEFAULT_LOCALE = 'en'
+//const defaultLocale = 'en'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
@@ -43,8 +45,8 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const pathSegments = pathname.split('/').filter(Boolean)
 
   const firstSegment = pathSegments[0]
-  const hasLocalePrefix = LOCALES.includes(firstSegment as (typeof LOCALES)[number])
-  const currentLocale = hasLocalePrefix ? firstSegment : DEFAULT_LOCALE
+  const hasLocalePrefix = supportedLocales.includes(firstSegment as (typeof supportedLocales)[number])
+  const currentLocale = hasLocalePrefix ? firstSegment : defaultLocale
 
   const baseHref =
     type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
@@ -55,7 +57,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   const isExternal = /^https?:\/\//.test(baseHref)
   const alreadyHasLocale =
-    LOCALES.some((loc) => baseHref.startsWith(`/${loc}/`)) || isExternal
+    supportedLocales.some((loc) => baseHref.startsWith(`/${loc}/`)) || isExternal
 
   const href =  `/${currentLocale}${baseHref.startsWith('/') ? '' : '/'}${baseHref}`
 

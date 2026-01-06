@@ -22,6 +22,15 @@ import { ko } from '@payloadcms/translations/languages/ko'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+
+
+function toMap<T>(arr: T[]): Record<string, T> {
+  return arr.reduce((acc, curr) => {
+    acc[curr as unknown as string] = curr
+    return acc
+  }, {} as Record<string, T>)
+}
+
 export default buildConfig({
   routes: {
     api: '/ins/api',
