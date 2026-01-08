@@ -211,6 +211,7 @@ export interface CallToActionBlock {
                 value: number | Post;
               } | null);
           url?: string | null;
+          title?: string | null;
           label: string;
           /**
            * Choose how the link should be rendered.
@@ -479,6 +480,7 @@ export interface ContentBlock {
                 value: number | Post;
               } | null);
           url?: string | null;
+          title?: string | null;
           label: string;
           /**
            * Choose how the link should be rendered.
@@ -1053,6 +1055,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              title?: T;
               label?: T;
               appearance?: T;
             };
@@ -1079,6 +1082,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              title?: T;
               label?: T;
               appearance?: T;
             };
@@ -1585,6 +1589,7 @@ export interface Header {
                 value: number | Post;
               } | null);
           url?: string | null;
+          title?: string | null;
           label: string;
         };
         id?: string | null;
@@ -1614,6 +1619,7 @@ export interface Footer {
                 value: number | Post;
               } | null);
           url?: string | null;
+          title?: string | null;
           label: string;
         };
         id?: string | null;
@@ -1637,6 +1643,7 @@ export interface HeaderSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              title?: T;
               label?: T;
             };
         id?: T;
@@ -1660,6 +1667,7 @@ export interface FooterSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              title?: T;
               label?: T;
             };
         id?: T;

@@ -103,6 +103,16 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       fields: [
         ...linkTypes,
         {
+          name: 'title',
+          type: 'text',
+          admin: {
+            width: '50%',
+          },
+          label: 'Title',
+          required: false,
+          defaultValue: '',
+        },
+        {
           name: 'label',
           type: 'text',
           admin: {

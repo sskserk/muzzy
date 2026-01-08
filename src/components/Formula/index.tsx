@@ -13,7 +13,7 @@ import type { Page, Post } from '@/payload-types'
 //const DEFAULT_LOCALE = 'en'
 //const defaultLocale = 'en'
 
-type CMSLinkType = {
+type FormulaLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
   children?: React.ReactNode
   className?: string
@@ -28,7 +28,7 @@ type CMSLinkType = {
   url?: string | null
 }
 
-export const CMSLink: React.FC<CMSLinkType> = (props) => {
+export const FormulaLink: React.FC<FormulaLinkType> = (props) => {
   const {
     type,
     appearance = 'inline',
@@ -55,7 +55,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   if (!baseHref) return null
 
-
+  console.log('Rendering FormulaLink with href:', baseHref)
   const isExternal = /^https?:\/\//.test(baseHref)
   const alreadyHasLocale =
     supportedLocales.some((loc) => baseHref.startsWith(`/${loc}/`)) || isExternal

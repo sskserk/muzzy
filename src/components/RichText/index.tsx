@@ -10,7 +10,7 @@ import {
   LinkJSXConverter,
   RichText as ConvertRichText,
 } from '@payloadcms/richtext-lexical/react'
-
+import getDetectLocale from '@/utilities/getDetectLocale'
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 
 import type {
@@ -31,6 +31,8 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   if (typeof value !== 'object') {
     throw new Error('Expected value to be an object')
   }
+
+  console.log('internalDocToHref value:', value);
   const slug = value.slug
   return relationTo === 'posts' ? `/posts/${slug}` : `/${slug}`
 }
@@ -38,6 +40,30 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
+  link: ({ node, converters, nodesToJSX }) => {
+    console.log('Rendering link node:', node.fields, node, node.fields.doc?.value);
+    const isInternalLink = node.fields.linkType && node.fields.linkType === 'internal'
+
+    let href = node.fields.url as string
+
+    if (isInternalLink && node.fields.doc?.value && typeof node.fields.doc.value === 'object') {
+      const value = node.fields.doc.value as { [key: string]: unknown; id: number; slug?: string }
+      if (value.slug && typeof value.slug === 'string') {
+        const locale = 'en' 
+        href = (node.fields.doc.relationTo === 'posts' ? `/posts/${value.slug}` : `./${value.slug}`)
+        console.log('slug', value.slug,'locale:', locale)
+      }
+    }
+
+    const linkTitle = node.fields.title as string
+    const linkText = nodesToJSX({ nodes: node.children, converters })
+    //const linkText = 
+    return (
+      <a href={href} {...(linkTitle ? { title: linkTitle } : "")}>
+       {linkText}
+      </a>
+    )
+  },
   blocks: {
     banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
     mediaBlock: ({ node }) => (
@@ -51,7 +77,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       />
     ),
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
-    cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+    cta: ({ node }) => <CallToActionBlock {...node.fields} />
   },
 })
 
@@ -63,6 +89,7 @@ type Props = {
 
 export default function RichText(props: Props) {
   const { className, enableProse = true, enableGutter = true, ...rest } = props
+  console.log('Rendering RichText with props:', rest);
   return (
     <ConvertRichText
       converters={jsxConverters}

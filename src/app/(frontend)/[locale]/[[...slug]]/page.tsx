@@ -76,7 +76,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   return (
     <>
       <Header />
-      <article className="pt-16 pb-24">
+      <article className="pt-16 pb-24" style={{border: "1px solid rgb(44, 207, 99)"}} >
         <PageClient />
         {/* Allows redirects for valid pages too */}
         <PayloadRedirects disableNotFound url={url} />

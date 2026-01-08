@@ -25,6 +25,14 @@ export const defaultLexical = lexicalEditor({
 
         return [
           ...defaultFieldsWithoutUrl,
+                    {
+            name: 'title',
+            type: 'text',
+            label: 'Title Attribute',
+            admin: {
+              description:  'The title attribute provides additional information about the link.',
+            },
+          },
           {
             name: 'url',
             type: 'text',

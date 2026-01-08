@@ -8,6 +8,7 @@ export default function getDetectLocale() {
     const pathSegments = urlPathname.split('/').filter(Boolean)
     const firstSegment = pathSegments[0]
 
+    console.log('path segments', pathSegments)
     if (supportedLocales.includes(firstSegment)) {
       return firstSegment
     }
