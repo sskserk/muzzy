@@ -18,7 +18,7 @@ export const generatePreviewPath = ({ collection, slug, req, locale }: Props) =>
   if (slug === undefined || slug === null) {
     return null
   }
-  console.log('Generating preview path for collection:', collection, 'slug:', slug, 'locale:', locale)
+  console.debug('Generating preview path for collection:', collection, 'slug:', slug, 'locale:', locale)
   
   // Encode to support slugs with special characters
   const encodedSlug = encodeURIComponent(slug)
@@ -32,7 +32,7 @@ export const generatePreviewPath = ({ collection, slug, req, locale }: Props) =>
 
   const url = `${nextConfig.basePath}/next/preview?${encodedParams.toString()}&locale=${locale || 'en'}`
 
-  console.log('Generated preview URL:', url);
+  console.debug('Generated preview URL:', url);
 
   return url
 }
