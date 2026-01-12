@@ -32,7 +32,6 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
     throw new Error('Expected value to be an object')
   }
 
-  console.log('internalDocToHref value:', value);
   const slug = value.slug
   return relationTo === 'posts' ? `/posts/${slug}` : `/${slug}`
 }
@@ -41,7 +40,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
   link: ({ node, converters, nodesToJSX }) => {
-    console.log('Rendering link node:', node.fields, node, node.fields.doc?.value);
+    //console.log('Rendering link node:', node.fields, node, node.fields.doc?.value);
     const isInternalLink = node.fields.linkType && node.fields.linkType === 'internal'
 
     let href = node.fields.url as string
@@ -49,9 +48,9 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     if (isInternalLink && node.fields.doc?.value && typeof node.fields.doc.value === 'object') {
       const value = node.fields.doc.value as { [key: string]: unknown; id: number; slug?: string }
       if (value.slug && typeof value.slug === 'string') {
-        const locale = 'en' 
+        const locale = 'en'
         href = (node.fields.doc.relationTo === 'posts' ? `/posts/${value.slug}` : `./${value.slug}`)
-        console.log('slug', value.slug,'locale:', locale)
+        console.log('slug', value.slug, 'locale:', locale)
       }
     }
 
@@ -60,7 +59,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     //const linkText = 
     return (
       <a href={href} {...(linkTitle ? { title: linkTitle } : "")}>
-       {linkText}
+        {linkText}
       </a>
     )
   },
@@ -89,7 +88,6 @@ type Props = {
 
 export default function RichText(props: Props) {
   const { className, enableProse = true, enableGutter = true, ...rest } = props
-  console.log('Rendering RichText with props:', rest);
   return (
     <ConvertRichText
       converters={jsxConverters}

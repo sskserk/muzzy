@@ -10,18 +10,36 @@ This template is right for you if you are working on:
 
 Core features:
 
-- [Pre-configured Payload Config](#how-it-works)
-- [Authentication](#users-authentication)
-- [Access Control](#access-control)
-- [Layout Builder](#layout-builder)
-- [Draft Preview](#draft-preview)
-- [Live Preview](#live-preview)
-- [On-demand Revalidation](#on-demand-revalidation)
-- [SEO](#seo)
-- [Search](#search)
-- [Redirects](#redirects)
-- [Jobs and Scheduled Publishing](#jobs-and-scheduled-publish)
-- [Website](#website)
+- [Payload Website Template](#payload-website-template)
+  - [Quick Start](#quick-start)
+    - [Clone](#clone)
+    - [Development](#development)
+  - [How it works](#how-it-works)
+    - [Collections](#collections)
+    - [Globals](#globals)
+  - [Access control](#access-control)
+  - [Layout Builder](#layout-builder)
+  - [Lexical editor](#lexical-editor)
+  - [Draft Preview](#draft-preview)
+  - [Live preview](#live-preview)
+  - [On-demand Revalidation](#on-demand-revalidation)
+  - [SEO](#seo)
+  - [Search](#search)
+  - [Redirects](#redirects)
+  - [Jobs and Scheduled Publish](#jobs-and-scheduled-publish)
+  - [Website](#website)
+    - [Cache](#cache)
+  - [Development](#development-1)
+    - [Working with Postgres](#working-with-postgres)
+      - [Local development](#local-development)
+      - [Migrations](#migrations)
+    - [Docker](#docker)
+    - [Seed](#seed)
+  - [Production](#production)
+    - [Deploying to Vercel](#deploying-to-vercel)
+    - [Self-hosting](#self-hosting)
+  - [Questions](#questions)
+- [Regenerate importmap](#regenerate-importmap)
 
 ## Quick Start
 
@@ -301,3 +319,7 @@ You can also deploy your app manually, check out the [deployment documentation](
 ## Questions
 
 If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+
+
+# Regenerate importmap
+npm run generate:importmap

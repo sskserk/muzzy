@@ -55,8 +55,6 @@ export default async function Page({ params: paramsPromise }: Args) {
   const url = '/' + decodedSlug
   let page: RequiredDataFromCollectionSlug<'pages'> | null
 
-  console.log('Fetching page for slug:', decodedSlug, 'locale:', locale, 'draft mode:', draft)
-
   page = await queryPageBySlug({
     slug: decodedSlug,
     locale: locale,
@@ -75,8 +73,8 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <>
-      <Header />
-      <article className="pt-16 pb-24" style={{border: "1px solid rgb(44, 207, 99)"}} >
+      <Header currentLocale={locale} />
+      <article className="pt-16 pb-24" style={{ border: "1px solid rgb(44, 207, 99)" }} >
         <PageClient />
         {/* Allows redirects for valid pages too */}
         <PayloadRedirects disableNotFound url={url} />
