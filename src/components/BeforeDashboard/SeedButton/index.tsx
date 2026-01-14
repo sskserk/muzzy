@@ -32,7 +32,7 @@ export const SeedButton: React.FC = () => {
         return
       }
       if (error) {
-        toast.error(`An error occurred, please refresh and try again.`)
+        console.log(`An error occurred, please refresh and try again.`)
         return
       }
 

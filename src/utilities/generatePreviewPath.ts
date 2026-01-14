@@ -18,7 +18,7 @@ export const generatePreviewPath = ({ collection, slug, locale }: Props) => {
   if (slug === undefined || slug === null) {
     return null
   }
-  console.debug('Generating preview path for collection:', collection, 'slug:', slug, 'locale:', locale)
+  //console.debug('Generating preview path for collection:', collection, 'slug:', slug, 'locale:', locale)
   
   // Encode to support slugs with special characters
   const encodedSlug = encodeURIComponent(slug)

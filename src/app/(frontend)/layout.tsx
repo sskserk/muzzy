@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // const headersList = await headers()
   // const langHeader =  headersList.get('x-locale') ?? 'en'
 
-  return <>{ children }</>
+  return <>{children}</>
 }
 
 export const metadata: Metadata = {

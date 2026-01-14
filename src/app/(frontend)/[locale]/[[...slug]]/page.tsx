@@ -104,7 +104,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale: TypedLocale }) => {
   const { isEnabled: draft } = await draftMode()
 
-  console.log('Querying page by slug:', slug, 'locale:', locale, 'draft mode:', draft)
+//  console.log('Querying page by slug:', slug, 'locale:', locale, 'draft mode:', draft)
   const payload = await getPayload({ config: configPromise })
 
 

@@ -11,7 +11,7 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { HeaderNav } from './Nav'
 
 export interface HeaderClientProps {
-  data: Header
+  data?: Header
   currentLocale?: string
 }
 
@@ -25,11 +25,15 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, currentLocale}
         <Link href="/">
           <Logo loading="eager" priority="high" />
         </Link>
-        <LanguageSwitcher languageOptions={[
-          { label: 'English', value: 'en' },
-          { label: 'Dutch', value: 'nl' },
-        ]} currentLocale={currentLocale || 'en'}/>
-        <HeaderNav data={data} />
+        <LanguageSwitcher
+          languageOptions={[
+            { label: 'English', value: 'en' },
+            { label: 'Dutch', value: 'nl' },
+            { label: 'Korean', value: 'ko' },
+          ]}
+          currentLocale={currentLocale || 'en'}
+        />
+        {/* <HeaderNav data={data} /> */}
       </div>
     </header>
   )

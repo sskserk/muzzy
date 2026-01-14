@@ -50,7 +50,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       if (value.slug && typeof value.slug === 'string') {
         const locale = 'en'
         href = (node.fields.doc.relationTo === 'posts' ? `/posts/${value.slug}` : `./${value.slug}`)
-        console.log('slug', value.slug, 'locale:', locale)
+        //console.log('slug', value.slug, 'locale:', locale)
       }
     }
 
