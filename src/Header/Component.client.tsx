@@ -16,11 +16,6 @@ export interface HeaderClientProps {
 }
 
 
-const languageOptions = [
-  { label: 'English', value: 'en' },
-  { label: 'Dutch', value: 'nl' },
-]
-
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data, currentLocale}) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)

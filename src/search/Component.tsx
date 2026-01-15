@@ -4,14 +4,14 @@ import { Label } from '@/components/ui/label'
 import React, { useState, useEffect } from 'react'
 import { useDebounce } from '@/utilities/useDebounce'
 import { useRouter } from 'next/navigation'
-import detectLocale from '@/utilities/getDetectLocale'
+//import detectLocale from '@/utilities/getDetectLocale'
 
 export const Search: React.FC = () => {
   const [value, setValue] = useState('')
   const router = useRouter()
 
   const debouncedValue = useDebounce(value)
-  const currentLocale = detectLocale()
+  const currentLocale = 'en'
 
   useEffect(() => {
     router.push(`/${currentLocale}/search${debouncedValue ? `?q=${debouncedValue}` : ''}`)

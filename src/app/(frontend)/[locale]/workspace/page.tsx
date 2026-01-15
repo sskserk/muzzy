@@ -1,16 +1,13 @@
-import { getPayload, TypedLocale, type RequiredDataFromCollectionSlug } from 'payload'
-
+import { TypedLocale } from 'payload'
 
 type Args = {
   params: Promise<{
-    locale?: TypedLocale;
+    locale?: TypedLocale
   }>
 }
 
 export default async function Page({ params: paramsPromise }: Args) {
-
-
-      const { locale = 'en' } = await paramsPromise
+  const { locale = 'en' } = await paramsPromise
 
   return (
     <div>
