@@ -1,31 +1,16 @@
-version: '3'
 
 services:
   payload:
-    image: node:18-alpine
+    image: payl:latest
+    user: 1001:1001
     ports:
-      - '3000:3000'
+      - "8080:8080"
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
-    depends_on:
-      - mongo
+      # Bind a writable data directory into the container; SQLite DB lives under /app/data
+      - ./data:/app/data:rw
+    environment:
+      - PORT=8080
+      - HOSTNAME=0.0.0.0
+      - DATABASE_URI=file:/app/data/payloads.db
     env_file:
       - .env
-
-  mongo:
-    image: mongo:latest
-    ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
-    volumes:
-      - data:/data/db
-    logging:
-      driver: none
-
-volumes:
-  data:
-  node_modules:
