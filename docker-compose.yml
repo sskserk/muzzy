@@ -1,7 +1,7 @@
 
 services:
   payload:
-    image: payl:latest
+    image: payloads:latest
     user: 1001:1001
     ports:
       - "8080:8080"
@@ -14,3 +14,14 @@ services:
       - DATABASE_URI=file:/app/data/payloads.db
     env_file:
       - .env
+
+  nginx:
+    image: nginx:1.28-otel
+
+    volumes:
+      - ./nginx_proxy/dev/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx_proxy/dev/:/usr/share/nginx/html
+      - ./nginx_proxy/focus-group/fullchain2.pem:/etc/ssl/certs/cert.pem
+      - ./nginx_proxy/focus-group/privkey2.pem:/etc/ssl/private/privkey.pem
+      - ./uploads:/uploads
+    network_mode: host
