@@ -23,7 +23,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, currentLocale}
     <header style={{ border: "1px solid rgb(44, 207, 99)" }} className="container relative z-10   " >
       <div className="py-8 flex justify-between">
         <Link href="/">
-          <Logo loading="eager" priority="high" className="invert dark:invert-0" />
+          <Logo loading="eager" priority="high" />
         </Link>
         <LanguageSwitcher languageOptions={[
           { label: 'English', value: 'en' },

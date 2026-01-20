@@ -74,7 +74,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     <>
       <Header currentLocale={locale} />
       <article className="pt-16 pb-24" style={{ border: "1px solid rgb(44, 207, 99)" }} >
-        <PageClient />
+        {/* <PageClient /> */}
         {/* Allows redirects for valid pages too */}
         <PayloadRedirects disableNotFound url={url} />
 
@@ -95,6 +95,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const page = await queryPageBySlug({
     slug: decodedSlug,
     locale: locale,
+  
   })
 
   return generateMeta({ doc: page })
