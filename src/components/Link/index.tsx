@@ -56,9 +56,9 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   if (!baseHref) return null
 
 
-  const isExternal = /^https?:\/\//.test(baseHref)
-  const alreadyHasLocale =
-    supportedLocales.some((loc) => baseHref.startsWith(`/${loc}/`)) || isExternal
+//  const isExternal = /^https?:\/\//.test(baseHref)
+//  const alreadyHasLocale =
+//    supportedLocales.some((loc) => baseHref.startsWith(`/${loc}/`)) || isExternal
 
   const href = `/${currentLocale}${baseHref.startsWith('/') ? '' : '/'}${baseHref}`
 

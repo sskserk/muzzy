@@ -26,7 +26,6 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from 'payload'
-import { ko } from '@payloadcms/translations/languages/ko'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',

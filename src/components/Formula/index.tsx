@@ -55,10 +55,10 @@ export const FormulaLink: React.FC<FormulaLinkType> = (props) => {
 
   if (!baseHref) return null
 
-  console.log('Rendering FormulaLink with href:', baseHref)
-  const isExternal = /^https?:\/\//.test(baseHref)
-  const alreadyHasLocale =
-    supportedLocales.some((loc) => baseHref.startsWith(`/${loc}/`)) || isExternal
+//  console.log('Rendering FormulaLink with href:', baseHref)
+//  const isExternal = /^https?:\/\//.test(baseHref)
+//  const alreadyHasLocale =
+//    supportedLocales.some((loc) => baseHref.startsWith(`/${loc}/`)) || isExternal
 
   const href = `/${currentLocale}${baseHref.startsWith('/') ? '' : '/'}${baseHref}`
 

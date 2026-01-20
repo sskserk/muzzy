@@ -13,7 +13,7 @@ type Props = {
   locale?: string
 }
 
-export const generatePreviewPath = ({ collection, slug, req, locale }: Props) => {
+export const generatePreviewPath = ({ collection, slug, locale }: Props) => {
   // Allow empty strings, e.g. for the homepage
   if (slug === undefined || slug === null) {
     return null

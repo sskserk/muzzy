@@ -2,14 +2,16 @@ import type { ReactNode } from 'react'
 
 type LocaleLayoutProps = {
   children: ReactNode
-  params: {
+  params: Promise<{
     locale: string
-  }
+  }>
 }
 
-export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
+export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
+  const { locale = 'en' } = await params
+
   return (
-    <html lang={params.locale}>
+    <html lang={locale}>
       <head>
         {/* <InitTheme /> */}
         <link href="/favicon.ico" rel="icon" sizes="32x32" />

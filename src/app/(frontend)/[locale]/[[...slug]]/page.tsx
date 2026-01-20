@@ -14,7 +14,6 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { LocaleRouteNormalizer } from 'next/dist/server/normalizers/locale-route-normalizer'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -108,7 +107,6 @@ const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale: T
   console.log('Querying page by slug:', slug, 'locale:', locale, 'draft mode:', draft)
   const payload = await getPayload({ config: configPromise })
 
-  const locName = locale;
 
   const result = await payload.find({
     collection: 'pages',

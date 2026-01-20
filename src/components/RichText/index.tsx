@@ -10,7 +10,7 @@ import {
   LinkJSXConverter,
   RichText as ConvertRichText,
 } from '@payloadcms/richtext-lexical/react'
-import getDetectLocale from '@/utilities/getDetectLocale'
+//import getDetectLocale from '@/utilities/getDetectLocale'
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 
 import type {
