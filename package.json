@@ -29,7 +29,7 @@
     "@payloadcms/next": "3.68.5",
     "@payloadcms/plugin-form-builder": "3.68.5",
     "@payloadcms/plugin-nested-docs": "3.68.5",
-    "@payloadcms/plugin-redirects": "3.68.5",
+    "@payloadcms/db-postgres": "3.68.5",
     "@payloadcms/plugin-search": "3.68.5",
     "@payloadcms/plugin-seo": "3.68.5",
     "@payloadcms/richtext-lexical": "3.68.5",
